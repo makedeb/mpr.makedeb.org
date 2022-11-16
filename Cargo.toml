@@ -1,0 +1,18 @@
+[workspace]
+members = [".", "migration"]
+
+[package]
+name = "mpr"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+migration = { path = "migration" }
+
+clap = { version = "4.0.12", features = ["derive", "env"] }
+colored = "2.0.0"
+exitcode = "1.1.2"
+hw-msg = "0.2.0"
+quit = "1.1.4"
+sea-orm = { version = "0.10.3", features = ["sqlx-mysql", "runtime-tokio-rustls", "macros"] }
+tokio = { version = "1.21.2", features = ["macros", "rt-multi-thread"] }
