@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use rocket::config::LogLevel;
 
 #[derive(Parser)]
 pub struct Cli {
@@ -18,9 +19,28 @@ pub struct Cli {
     #[arg(long, env("MPR_DATABASE_NAME"))]
     pub db_name: String,
 
+    /// Skip running migrations on startup.
+    #[arg(long, env("MPR_SKIP_MIGRATIONS"))]
+    pub skip_migrations: bool,
+
     #[command(subcommand)]
     pub command: Commands,
 }
 
 #[derive(Subcommand)]
-pub enum Commands {}
+pub enum Commands {
+    /// Serve the HTTP interface.
+    ServeHttp {
+        /// The IP address to bind to.
+        #[arg(long, default_value = "127.0.0.1", env("MPR_HTTP_ADDRESS"))]
+        address: String,
+
+        /// The port to serve over.
+        #[arg(long, default_value = "8080", env("MPR_HTTP_PORT"))]
+        port: u16,
+
+        /// The amount of logging to report.
+        #[arg(long, default_value = "critical")]
+        log_level: LogLevel
+    }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <!-- Syntax highlighting in code blocks -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+
+        <!-- Copy to clipboard functions -->
+        <script src="/static/js/copy.js"></script>
+        <script src="/static/js/codeblock-copy.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/media/main.css">
+
+        <!-- Resources -->
+        <link rel="shortcut icon" href="/media/images/makedeb-logo.svg">
+
+        <!-- Alternate resources -->
+        <link rel="alternate" type="application/rss+xml" title="Newest Packages RSS" href="/rss">
+
+        <title>MPR - {{ mpr.title | tr }}</title>
+    </head>
+    <header>
+        <a class="makedeb-brand" href="/">
+            <img class="makedeb-logo" src="/static/images/makedeb-logo.svg" alt="makedeb logo">
+            <p class="makedeb-logo-text">makedeb</p>
+        </a>
+        
+        <div class="links">
+            <a href="https://www.{{ makedeb_url }}">Homepage</a>
+            <a href="https://docs.{{ makedeb_url }}">Docs</a>
+            <p>MPR</p>
+            <a href="https://www.{{ makedeb_url }}/news">News</a>
+            <a href="https://www.{{ makedeb_url }}/donate">Donate</a>
+        </div>
+    </header>
+    <hr class="header-hr">
+   <body>
+       <!-- Dimmer -->
+       <div id="dimmer" class="hidden"></div>
+
+       <!-- Toast notifications -->
+       <div id="toasts"></div>
+        
+       <!-- Actual page content -->
+       {% block body %}{% endblock %}
+    </body>
+    <footer>
+        <div class="copyright">
+            <p>&copy; {{ now.strftime("%Y") }} makedeb Development Team</p>
+        </div>
+        <div class="links">
+            <a href="/about">Instance Information</a>
+            <a href="/api">API</a>
+            <a href="/mpr-archives">MPR Archives</a>
+            <a href="https://github.com/makedeb/mprweb">Report an Issue</a>
+            <a href="https://github.com/makedeb">GitHub</a>
+            <a href="https://{{ makedeb_url }}/privacy">Privacy</a>
+        </div>
+    </footer>
+</html>

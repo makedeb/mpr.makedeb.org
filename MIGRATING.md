@@ -34,7 +34,7 @@ mysqldump --no-create-info --ignore-table='{python_db_name}.alembic_version' '{p
 ```
 
 ## Importing the data into the Rust database
-Now that your data is exported, all that's needed is to import it into the Python implementation (replacing `{rust_db_name}` with the name of the Rust implementation's database):
+Now that your data is exported, all that's needed is to import it into the Rust implementation's database as shown below (replacing `{rust_db_name}` with the name of the Rust implementation's database):
 
 ```sh
 mysql '{rust_db_name}' < mprweb.db

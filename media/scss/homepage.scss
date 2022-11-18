@@ -1,0 +1,76 @@
+@import "variables";
+
+.intro {
+	text-align: center;
+	// We have a global setting to where the second to last item in 'body'
+	// has a 'padding-bottom' of 3em so that there's space between it and
+	// the footer. We don't want that here, as that's the
+	// 'Newest/Popular Packages' sections, and it looks weird with the
+	// white gap at the bottom.
+	//
+	// You can remove this if a new section gets added.
+	margin-bottom: 0 !important;
+	
+	.big-intro {
+		padding: 3em 10%;
+		
+		h2 {
+			font-size: 3em;
+		}
+
+		p {
+			font-size: 1.5em;
+			color: $inactive-link;
+			padding: 0.5em 5% 0;
+		}
+	}
+
+	.packages {
+		background-color: $silver;
+		display: flex;
+		padding: 1em;
+		justify-content: center;
+
+		@media (max-width: 730px) {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.newest-packages, .popular-packages {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			max-width: 25em;
+			padding-bottom: 0.8em;
+
+			@media (max-width: 730px) {
+				padding-top: 2em;
+			}
+		}
+
+		h2 {
+			padding-bottom: 0.8em;
+		}
+
+		.package-item {
+			background-color: lighten($silver, 20%);
+			width: 20em;
+			padding: 0.5em;
+			margin-top: 0.5em;
+			border-radius: 0.2em;
+			border-color: $light-grey;
+			border-width: 0.15em;
+			border-style: solid;
+
+			p {
+				line-height: 1.3em;
+				margin: 0;
+			}
+
+			.description {
+				color: darken($light-grey, 35%);
+			}
+		}
+	}
+}

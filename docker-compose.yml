@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  mariadb:
+    image: mariadb:10
+    restart: unless-stopped
+    environment:
+      - "MYSQL_USER=${MPR_DATABASE_USER}"
+      - "MYSQL_PASSWORD=${MPR_DATABASE_PASSWORD}"
+      - "MYSQL_ROOT_PASSWORD=${MPR_DATABASE_PASSWORD}"
+      - "MYSQL_DATABASE=${MPR_DATABASE_NAME}"
+  mpr-http:
+    image: proget.makedeb.org/docker/makedeb/mpr:0.1.0
+    build: ./
+    restart: unless-stopped
+    command: serve-http
+    environment:
+      - MPR_DATABASE_USERNAME
+      - MPR_DATABASE_PASSWORD
+      - MPR_DATABASE_HOST
+      - MPR_DATABASE_NAME
+      - "MPR_HTTP_ADDRESS=0.0.0.0"
+    ports:
+      - "${MPR_HTTP_PORT}:8080"
+    depends_on:
+      - mariadb
